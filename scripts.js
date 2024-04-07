@@ -19,6 +19,10 @@ const handleClick = (element) => {
   // this uses the "log" method on the "console" to log out the element's id so we can see it with our human eyes
   console.log(`The element you clicked on has an id:  ${element.id}`)
 
+  // NOTE TO SELF: If you were to add content to an element in the index.html file, the innerHTML prints in the browser console, and program will stop there.
+  // console.log(document.getElementById(element.id).innerHTML) => to witness the innerHTML 
+
+
   // this next line prevents an X being changed to an O or an O being changed to an X by...
   //  checking to see if the square clicked has anything in it, if not continue
   if(!document.getElementById(element.id).innerHTML){
@@ -34,7 +38,10 @@ const handleClick = (element) => {
 
 
 
-
+// BIG NOTE: In the following function, you can pass `id` as a parameter into the function. 
+// 1. The element was passed to handleClick function when you used "this" in index.html
+// 2. You can access `id` of elements because BUILT-IN
+// 3. The id was passed to addMarker in handleClick
 
 // this function places the "currentMarker" inside the HTML element that was clicked and calls the "changeMarker" function.
 const addMarker = (id) => {
@@ -44,7 +51,10 @@ const addMarker = (id) => {
   console.log(`Therefore, a  "${currentMarker}"  should be placed in the square with the id:  ${id}`)
   
   // @TODO-2: Build a line of code that will set the innerHTML property of the element that was clicked to the "currentMarker"
-  
+  // I used getElementbyId b/c id was passed into the function as a parameter
+  document.getElementById(id).innerHTML = currentMarker;
+
+
   // @TODO-2.5: MIX & MATCH, You will need the following pieces of code to build that line:
   // = currentMarker
   // .getElementById(id)
@@ -86,7 +96,9 @@ const resetBoard = () => {
   
   // @TODO-3: To make your "Restart" button work you'll need to build a line of code here that:
       // collects all of the "td" elements into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp  
-    
+  
+  const squares = document.getElementsByTagName("TD");    
+  
   // @TODO-3.5: MIX & MATCH, You will need the following pieces of code to build that line:
   // squares
   // .getElementsByTagName("TD")
